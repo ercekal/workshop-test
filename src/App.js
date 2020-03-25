@@ -1,20 +1,24 @@
-import React from 'react';
-import styled from 'styled-components';
-import InputContainer from './InputContainer';
-import Cities from './Cities';
-import './App.css';
+import React from 'react'
+import styled from 'styled-components'
+import InputContainer from './InputContainer'
+import Cities from './Cities'
+import './App.css'
 
 const Div = styled.div`
   display: column;
+  justify-content: flex-start;
+  height: 100vh;
+  background:#C6E2FF;
+  padding: 20px;
 `
 
-function App() {
+function App () {
   return (
-    <Div className="App">
+    <Div>
       <InputContainer />
       <Cities />
     </Div>
-  );
+  )
 }
 
-export default App;
+export default App
