@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import InputContainer from './InputContainer'
-import Cities from './Cities'
+import Cities from './Result'
 import './App.css'
 
 const Div = styled.div`
