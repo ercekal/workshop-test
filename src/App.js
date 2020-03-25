@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import InputContainer from './components/InputContainer'
-import Cities from './components/Result'
+import Result from './components/Result'
 // import './App.css'
 
 const Div = styled.div`
@@ -16,7 +16,7 @@ function App () {
   return (
     <Div>
       <InputContainer />
-      <Cities />
+      <Result />
     </Div>
   )
 }

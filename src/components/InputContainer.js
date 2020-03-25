@@ -28,6 +28,7 @@ const Button = styled.button`
   border: 1px solid black;
 `
 
+// Nice use of modern syntax & hooks
 const InputContainer = ({ onGetCities, onAddSearchInput }) => {
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)

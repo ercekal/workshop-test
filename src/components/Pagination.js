@@ -14,6 +14,9 @@ const Link = styled.div`
   color: ${props => props.clickable ? 'yellow' : 'black'};
 `
 
+// Good attention to detail spotting the need for pagination.
+// I appreciate this looks a little rushed, but it gets the
+// job done!!
 const Pagination = ({ totalPages, searchInput, onGetCities, page }) => {
   if (totalPages > 1) {
     const list = []

@@ -30,6 +30,9 @@ const Cities = ({ results, error, searchInput }) => {
   if (error) return <div>{error.message}</div>
   if (results !== null) {
     const { data, total, total_pages, page } = results
+
+    // Nice simple grouping function - not enough people make
+    // use of reduce!
     const GroupedCitiesByState = data.reduce((acc, item) => {
       if (!acc[item.state]) {
         acc[item.state] = []
