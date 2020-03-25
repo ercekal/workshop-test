@@ -6,6 +6,7 @@ import Cities from './Cities'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 const Result = ({ results, isFetching, error, searchInput }) => {
+  // Nice use of redux loading state
   return isFetching ? (
     <Loader
       type='Puff'
@@ -20,7 +21,9 @@ const Result = ({ results, isFetching, error, searchInput }) => {
 function mapStateToProps (state) {
   return {
     results: state.results,
-    error: state.error,
+    // You probably weren't able to trigger an API error which is why this
+    // didn't cause you any issues, but it looks like a typo
+    error: state.errorMessage,
     searchInput: state.searchInput,
     isFetching: state.isFetching
   }

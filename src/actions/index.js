@@ -6,6 +6,7 @@ export const GET_CITIES_FAILURE = 'GET_CITIES_FAILURE'
 export const ADD_SEARCH_INPUT = 'ADD_SEARCH_INPUT'
 
 export const getCities = (input) => {
+  // Nice use of thunks
   return (dispatch) => {
     dispatch({ type: 'GET_CITIES_REQUEST' })
     return axios(`https://jsonmock.hackerrank.com/api/cities/?city=${input}`)
