@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The project uses React, Redux, Styled Components and PropTypes for simple type checking.
+The project uses React, Redux, Redux Logger, Redux Thunk, Styled Components and PropTypes for simple type checking.
 
-After cloning the repo in your system in order to run the project please follow below steps:
+After cloning the repo in your system, in order to run the project please follow below steps:
 
 ### `yarn`
 
