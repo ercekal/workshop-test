@@ -1,7 +1,7 @@
-/* eslint-disable indent */
 import React from 'react'
 import { connect } from 'react-redux'
 import Loader from 'react-loader-spinner'
+import PropTypes from 'prop-types'
 import Cities from './Cities'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
@@ -27,3 +27,14 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps)(Result)
+
+Result.propTypes = {
+  number: PropTypes.number,
+  cities: PropTypes.arrayOf(
+    PropTypes.shape({
+      state: PropTypes.string,
+      city: PropTypes.string
+    })
+  ),
+  isFetching: PropTypes.bool
+}

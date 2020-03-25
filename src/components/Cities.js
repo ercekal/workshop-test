@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const CityBox = styled.div`
   display: flex;
@@ -34,11 +35,12 @@ const Cities = ({ cities, number }) => {
       return acc
     }, {})
 
-    const StateArray = Object.entries(GroupedCitiesByState)
+    const StatesArray = Object.entries(GroupedCitiesByState)
+
     return (
       <Container>
         <Number>Total cities found: {number}</Number>
-        {StateArray.map((entry) => {
+        {StatesArray.map((entry) => {
           return (
             <Row key={entry[0]}>
               <City name={entry[0]} />
@@ -53,3 +55,16 @@ const Cities = ({ cities, number }) => {
 }
 
 export default Cities
+
+Cities.propTypes = {
+  number: PropTypes.number,
+  cities: PropTypes.arrayOf(
+    PropTypes.shape({
+      state: PropTypes.string,
+      city: PropTypes.string
+    })
+  )
+}
+City.propTypes = {
+  name: PropTypes.string
+}

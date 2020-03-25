@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import InputContainer from './InputContainer'
-import Cities from './Result'
-import './App.css'
+import InputContainer from './components/InputContainer'
+import Cities from './components/Result'
+// import './App.css'
 
 const Div = styled.div`
   display: column;

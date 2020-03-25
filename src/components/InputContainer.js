@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { getCities } from './actions'
+import PropTypes from 'prop-types'
+import { getCities } from '../actions'
 
 const Wrapper = styled.div`
   display: column;
@@ -18,8 +19,8 @@ const Error = styled.div`
 
 const Input = styled.input`
   background:#C6E2FF;
-  margin-right: 10px;
-  border: 1px solid black;
+  margin: 0 10px 10px 0;
+  border: 1px solid ${props => props.error ? 'red' : 'black'};
 `
 
 const Button = styled.button`
@@ -40,9 +41,7 @@ const InputContainer = ({ onGetCities }) => {
     }
   }
 
-  const onChange = (e) => {
-    setInput(e.target.value)
-  }
+  const onChange = (e) => setInput(e.target.value)
 
   return (
     <Wrapper>
@@ -52,8 +51,9 @@ const InputContainer = ({ onGetCities }) => {
             type='text'
             value={input}
             onChange={onChange}
+            error={error}
           />
-          <Button onClick={(e) => onClick(e)}>
+          <Button onClick={onClick}>
             Search
           </Button>
         </form>
@@ -71,3 +71,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(InputContainer)
+
+InputContainer.propTypes = {
+  onGetCities: PropTypes.func
+}
