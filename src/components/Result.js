@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Cities from './Cities'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
-const Result = ({ cities, number, isFetching }) => {
+const Result = ({ cities, number, isFetching, error }) => {
   return isFetching ? (
     <Loader
       type='Puff'
@@ -14,7 +14,7 @@ const Result = ({ cities, number, isFetching }) => {
       width={100}
       timeout={3000}
     />
-  ) : <Cities cities={cities} number={number} />
+  ) : <Cities cities={cities} number={number} error={error} />
 }
 
 function mapStateToProps (state) {
@@ -36,5 +36,10 @@ Result.propTypes = {
       city: PropTypes.string
     })
   ),
+  error: PropTypes.shape({
+    error: PropTypes.string,
+    message: PropTypes.string,
+    detail: PropTypes.string
+  }),
   isFetching: PropTypes.bool
 }

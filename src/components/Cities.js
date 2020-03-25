@@ -24,7 +24,8 @@ const Number = styled.div`
 
 const City = ({ name }) => <CityBox>{name}</CityBox>
 
-const Cities = ({ cities, number }) => {
+const Cities = ({ cities, number, error }) => {
+  if (error) return <div>{error.message}</div>
   if (cities !== null) {
     const GroupedCitiesByState = cities.reduce((acc, item) => {
       if (!acc[item.state]) {
@@ -63,7 +64,12 @@ Cities.propTypes = {
       state: PropTypes.string,
       city: PropTypes.string
     })
-  )
+  ),
+  error: PropTypes.shape({
+    error: PropTypes.string,
+    message: PropTypes.string,
+    detail: PropTypes.string
+  })
 }
 City.propTypes = {
   name: PropTypes.string
