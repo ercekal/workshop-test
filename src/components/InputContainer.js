@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { getCities } from '../actions'
+import { getCities, addSearchInput } from '../actions'
 
 const Wrapper = styled.div`
   display: column;
@@ -28,7 +28,7 @@ const Button = styled.button`
   border: 1px solid black;
 `
 
-const InputContainer = ({ onGetCities }) => {
+const InputContainer = ({ onGetCities, onAddSearchInput }) => {
   const [input, setInput] = useState('')
   const [error, setError] = useState(false)
 
@@ -41,7 +41,10 @@ const InputContainer = ({ onGetCities }) => {
     }
   }
 
-  const onChange = (e) => setInput(e.target.value)
+  const onChange = (e) => {
+    onAddSearchInput(e.target.value)
+    setInput(e.target.value)
+  }
 
   return (
     <Wrapper>
@@ -66,12 +69,14 @@ const InputContainer = ({ onGetCities }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetCities: input => dispatch(getCities(input))
+    onGetCities: input => dispatch(getCities(input)),
+    onAddSearchInput: input => dispatch(addSearchInput(input))
   }
 }
 
 export default connect(null, mapDispatchToProps)(InputContainer)
 
 InputContainer.propTypes = {
-  onGetCities: PropTypes.func
+  onGetCities: PropTypes.func,
+  onAddSearchInput: PropTypes.func
 }

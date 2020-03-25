@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import Pagination from './Pagination'
 
 const CityBox = styled.div`
   display: flex;
@@ -24,10 +26,11 @@ const Number = styled.div`
 
 const City = ({ name }) => <CityBox>{name}</CityBox>
 
-const Cities = ({ cities, number, error }) => {
+const Cities = ({ results, error, searchInput }) => {
   if (error) return <div>{error.message}</div>
-  if (cities !== null) {
-    const GroupedCitiesByState = cities.reduce((acc, item) => {
+  if (results !== null) {
+    const { data, total, total_pages, page } = results
+    const GroupedCitiesByState = data.reduce((acc, item) => {
       if (!acc[item.state]) {
         acc[item.state] = []
       }
@@ -40,7 +43,7 @@ const Cities = ({ cities, number, error }) => {
 
     return (
       <Container>
-        <Number>Total cities found: {number}</Number>
+        <Number>Total cities found: {total}</Number>
         {StatesArray.map((entry) => {
           return (
             <Row key={entry[0]}>
@@ -49,6 +52,7 @@ const Cities = ({ cities, number, error }) => {
             </Row>
           )
         })}
+        <Pagination totalPages={total_pages} page={page} searchInput={searchInput} />
       </Container>
     )
   }
@@ -58,18 +62,26 @@ const Cities = ({ cities, number, error }) => {
 export default Cities
 
 Cities.propTypes = {
-  number: PropTypes.number,
-  cities: PropTypes.arrayOf(
+  results: PropTypes.oneOfType([
+    () => null,
     PropTypes.shape({
-      state: PropTypes.string,
-      city: PropTypes.string
+      page: PropTypes.number,
+      total_pages: PropTypes.number,
+      total: PropTypes.number,
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          state: PropTypes.string,
+          city: PropTypes.string
+        })
+      )
     })
-  ),
+  ]),
   error: PropTypes.shape({
     error: PropTypes.string,
     message: PropTypes.string,
     detail: PropTypes.string
-  })
+  }),
+  searchInput: PropTypes.string
 }
 City.propTypes = {
   name: PropTypes.string
