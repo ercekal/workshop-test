@@ -18,13 +18,13 @@ const Row = styled.div`
 
 const Number = styled.div`
   display: flex;
-  padding-bottom: 10px;
+  padding: 10px 0;
 `
 
 const City = ({ name }) => <CityBox>{name}</CityBox>
 
 const Cities = ({ cities, number }) => {
-  if (cities.length !== 0) {
+  if (cities !== null) {
     const GroupedCitiesByState = cities.reduce((acc, item) => {
       if (!acc[item.state]) {
         acc[item.state] = []

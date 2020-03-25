@@ -12,6 +12,7 @@ const Row = styled.div`
 `
 
 const Error = styled.div`
+  padding-top: 5px;
   color: red;
 `
 
@@ -33,10 +34,9 @@ const InputContainer = ({ onGetCities }) => {
   const onClick = (e) => {
     e.preventDefault()
     if (input !== '') {
-      if ((/^[a-zA-Z_\-]+$/.test(input))) {
-        return onGetCities(input)
-      }
-      setError(!(/^[a-zA-Z_\-]+$/.test(input)))
+      const result = /^[a-zA-Z_\\-]+$/.test(input)
+      if (result) onGetCities(input)
+      setError(!result)
     }
   }
 

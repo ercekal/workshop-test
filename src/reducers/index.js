@@ -1,5 +1,5 @@
 const initialState = {
-  cities: [],
+  cities: null,
   number: null
 }
 

@@ -8,10 +8,7 @@ export const getCities = (input) => {
   return (dispatch) => {
     dispatch({ type: 'GET_CITIES_REQUEST' })
     return axios(`https://jsonmock.hackerrank.com/api/cities/?city=${input}`)
-      .then(cities => {
-        console.log('cities: ', cities)
-        return dispatch({ type: 'GET_CITIES_SUCCESS', payload: cities.data })
-      })
+      .then(cities => dispatch({ type: 'GET_CITIES_SUCCESS', payload: cities.data }))
       .catch(error => dispatch({ type: 'GET_CITIES_FAILURE', payload: error, error: true }))
   }
 }
